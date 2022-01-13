@@ -1,7 +1,7 @@
 // Required packages
 const express = require("express");
-const path = require("path");
 const fs = require("fs");
+const path = require("path");
 const { v4: uuidv4 } = require("uuid");
 var notesData = require("./db/db.json");
 
@@ -41,7 +41,7 @@ app.delete("/api/notes/:id", (req, res) => {
 
   fs.writeFileSync("./db/db.json", JSON.stringify(notesData));
   res.json(notesData);
-})
+});
 
 // API Port listener 
 app.listen(PORT, () => {
