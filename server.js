@@ -33,6 +33,15 @@ app.post("/api/notes", (req, res) => {
   res.json(notesData);
 });
 
+// ability to delete notes
+app.delete("/api/notes/:id", (req, res) => {
+  const id = req.params.id;
+
+  notesData = notesData.filter(notes => notes.id != id);
+
+  fs.writeFileSync("./db/db.json", JSON.stringify(notesData));
+  res.json(notesData);
+})
 
 // API Port listener 
 app.listen(PORT, () => {
