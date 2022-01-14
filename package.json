@@ -3,7 +3,6 @@
   "description": "",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,7 +16,6 @@
   "dependencies": {
     "express": "^4.17.2"
   },
-
   "bugs": {
     "url": "https://github.com/adunderwood96/note-taker/issues"
   },
