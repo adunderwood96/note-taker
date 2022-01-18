@@ -1,3 +1,4 @@
+// required packages
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
@@ -7,17 +8,20 @@ var notesDB = require("./db/db.json");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
 app.use(express.static(path.join(__dirname, "./public")));
 
+// routes
 app.get("/", (req, res) => res.sendFile(path.join(__dirname, "./public/index.html")));
 app.get("/notes", (req, res) => res.sendFile(path.join(__dirname, "./public/notes.html")));
 app.get("/api/notes", (req, res) => { res.json(notesDB) });
 
+// wildcard 
 app.get("*", (req, res) => res.sendFile(path.join(__dirname, "./public/index.html")));
 
+// api to post to db.json
 app.post("/api/notes", (req, res) => {
   req.body.id = uuidv4();
   const newNote = req.body;
@@ -28,6 +32,7 @@ app.post("/api/notes", (req, res) => {
   res.json(notesDB);
 })
 
+// ability to delete notes
 app.delete("/api/notes/:id", (req, res) => {
   const id = req.params.id;
 
@@ -37,4 +42,5 @@ app.delete("/api/notes/:id", (req, res) => {
   res.json(notesDB);
 })
 
+// port listener
 app.listen(PORT, () => console.log(`App is listening on PORT ${PORT}`));
