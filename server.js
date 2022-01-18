@@ -14,7 +14,7 @@ require("./routes/htmlRoutes.js")(app);
 
 // wildcard route
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "/public/index.html"))
+  res.sendFile("/public/index.html")
 });
 
 // API Port listener 
