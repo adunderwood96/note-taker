@@ -1,9 +1,7 @@
 // required packages
 const express = require("express");
 const path = require("path");
-const fs = require("fs");
-const { v4: uuidv4 } = require("uuid");
-var notesDB = require("db/db.json");
+
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -21,26 +19,8 @@ app.get("/api/notes", (req, res) => { res.json(notesDB)});
 // wildcard route
 app.get("*", (req, res) => res.sendFile(path.join(__dirname, "./public/index.html")));
 
-// api to post to db.json
-app.post("/api/notes", (req, res) => {
-  req.body.id = uuidv4();
-  const newNote = req.body;
-
-  notesDB.push(newNote);
-
-  fs.writeFileSync("db/db.json", JSON.stringify(notesDB));
-  res.json(notesDB);
-})
-
-// ability to delete notes
-app.delete("/api/notes/:id", (req, res) => {
-  const id = req.params.id;
-
-  notesDB = notesDB.filter(notes => notes.id != id);
-
-  fs.writeFileSync("db/db.json", JSON.stringify(notesDB));
-  res.json(notesDB);
-})
+require("./routes/apiRoutes.js")(app);
+require("./routes/htmlRoutes.js")(app);
 
 // port listener
 app.listen(PORT, () => console.log(`App is listening on PORT ${PORT}`));
