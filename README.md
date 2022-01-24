@@ -14,8 +14,8 @@
   an app made using express and deployed on heroku that allows a user to save and add notes. Uses GET and Post methods to use client/server data. 
 
   ## Demo
-![start screen](https://github.com/adunderwood96/au-portfolio/blob/c3bab970a9921ada74f0f8c46592a399485a541a/assets/images/preview.png)
-![notes](https://github.com/adunderwood96/au-portfolio/blob/c3bab970a9921ada74f0f8c46592a399485a541a/assets/images/preview.png)
+![start screen](https://github.com/adunderwood96/note-taker/blob/c653e120aa833c12111944046b22c1ea75239270/public/assets/images/start.png)
+![notes](https://github.com/adunderwood96/note-taker/blob/c653e120aa833c12111944046b22c1ea75239270/public/assets/images/notes.png)
 
 
   ## Install
